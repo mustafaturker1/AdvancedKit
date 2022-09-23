@@ -27,7 +27,7 @@ class Kit extends PluginBase
         $this->getServer()->getCommandMap()->register("kit", new KitCommand());
         $this->getLogger()->notice("AdvancedKit Enable - https://github.com/mustafaturker1");
         $data = SQLite::getDatabase()->getKitData();
-        if (empty(!$data)) {
+        if (!empty($data)) {
             foreach ($data as $datum) {
                 PermissionManager::getInstance()->addPermission(new Permission($datum["kitPerm"]));
             }
